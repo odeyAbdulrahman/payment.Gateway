@@ -1,0 +1,6 @@
+payment.Gateway.Syberpay/bin/
+payment.Gateway.Syberpay/obj/
+
+*.dll
+packages/
+Benchmarks/

@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Json.Serialization;
+
+namespace payment.Gateway.Syberpay.Code.Base.Models
+{
+    public class SyperPaymentViewModel
+    {
+        [JsonIgnore]
+        public string customerRef { get; set; }
+        [Required]
+        public double amount { get; set; }
+        [JsonIgnore]
+        public int OrderDescriptionId { get; set; }
+        [Required]
+        public int PaymentType { get; set; }
+    }
+}
