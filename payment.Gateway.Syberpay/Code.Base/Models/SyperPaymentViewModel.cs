@@ -8,13 +8,9 @@ namespace payment.Gateway.Syberpay.Code.Base.Models
 {
     public class SyperPaymentViewModel
     {
-        [JsonIgnore]
+        [Required]
         public string customerRef { get; set; }
         [Required]
         public double amount { get; set; }
-        [JsonIgnore]
-        public int OrderDescriptionId { get; set; }
-        [Required]
-        public int PaymentType { get; set; }
     }
 }

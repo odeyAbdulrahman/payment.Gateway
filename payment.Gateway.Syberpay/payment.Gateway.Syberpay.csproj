@@ -2,6 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Odey Abdalrahman</Authors>
+    <Company>Odey Abdalrahman</Company>
+    <Description>This Nuget is for connectivity with CyberPay and API.
+1.   Write this code in Startup &gt;&gt; ConfigureServices :
+      services.AddScoped&lt;IPayment, Payment&gt;();
+2. Write this code in appsettings.json :
+    "PaymentConfig": {
+         "BaseUtl": "” "ApplicationId": " ", "ServiceId": " ", 
+         "Key": "", "Salt": "", "PayeeId": "", "Currency": "SDG" 
+    }
+3. Inject IPaymentin constructor:
+    private readonly IPayment Payment;
+    public SyberPayController(IPayment payment) { Payment = payment; }
+4. Use functions
+   1- CheckoutAsync();
+   2- StatusAsync();
+</Description>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <PackageId>SyberPay</PackageId>
+    <Version>1.0.1</Version>
+    <AssemblyName>payment.Gateway.SyberPay</AssemblyName>
+    <RootNamespace>payment.Gateway.SyberPay</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

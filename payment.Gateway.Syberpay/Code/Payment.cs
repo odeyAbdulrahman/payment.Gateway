@@ -17,8 +17,9 @@ namespace payment.Gateway.Syberpay.Code
 
         public async Task<SyperPaymentResponseViewModel> CheckoutAsync(SyperPaymentViewModel model)
         {
-            string Hash = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", Config().Key, Config().ApplicationId, Config().ServiceId, model.amount.ToString(), Config().Currency, model.customerRef.ToString(), Config().Salt);
-            var Values = new Dictionary<string, string> { { "applicationId", Config().ApplicationId }, { "payeeId", Config().PayeeId }, { "serviceId", Config().ServiceId }, { "customerRef", model.customerRef }, { "amount", model.amount.ToString() }, { "currency", Config().Currency }, { "hash", Hash } };
+            PaymentConfig Conf = Config();
+            string Hash = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", Conf.Key, Conf.ApplicationId, Conf.ServiceId, model.amount.ToString(), Conf.Currency, model.customerRef.ToString(), Conf.Salt);
+            var Values = new Dictionary<string, string> { { "applicationId", Config().ApplicationId }, { "payeeId", Config().PayeeId }, { "serviceId", Config().ServiceId }, { "customerRef", model.customerRef }, { "amount", model.amount.ToString() }, { "currency", Config().Currency }, { "hash", Hash.Sha256() } };
             // Serialize our concrete class into a JSON String
             var stringPayload = await Task.Run(() => JsonHelper.Serialize(Values));
             // Wrap our JSON inside a StringContent which then can be used by the HttpClient class
@@ -35,8 +36,9 @@ namespace payment.Gateway.Syberpay.Code
         /// <returns></returns>
         public async Task<SyperPaymentStatusResponseViewModel> StatusAsync(SyperPaymentStatusViewModel model)
         {
-            string Hash = string.Format("{0}|{1}|{2}|{3}", Config().Key, Config().ApplicationId, model.transactionId, Config().Salt);
-            var Values = new Dictionary<string, string> { { "applicationId", Config().ApplicationId }, { "transactionId", model.transactionId }, { "hash",  Hash} };
+            PaymentConfig Conf = Config();
+            string Hash = string.Format("{0}|{1}|{2}|{3}", Conf.Key, Conf.ApplicationId, model.transactionId, Conf.Salt);
+            var Values = new Dictionary<string, string> { { "applicationId", Config().ApplicationId }, { "transactionId", model.transactionId }, { "hash",  Hash.Sha256()} };
             // Serialize our concrete class into a JSON String
             var stringPayload = await Task.Run(() => JsonHelper.Serialize(Values));
             // Wrap our JSON inside a StringContent which then can be used by the HttpClient class

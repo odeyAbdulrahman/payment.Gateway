@@ -1,5 +1,5 @@
-payment.Gateway.Syberpay/bin/
-payment.Gateway.Syberpay/obj/
+payment.Gateway.SyberPay/bin/
+payment.Gateway.SyberPay/obj/
 
 *.dll
 packages/

@@ -5,14 +5,14 @@ using System.Text;
 
 namespace payment.Gateway.Syberpay.Code.Base.Common
 {
-    class SHA256Helper
+    static class SHA256Helper
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static String Sha256(string value)
+        public static string Sha256(this string value)
         {
             StringBuilder Sb = new StringBuilder();
 

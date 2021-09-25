@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace payment.Gateway.Syberpay.Code
 {
-    interface IPayment
+    public interface IPayment
     {
         Task<SyperPaymentResponseViewModel> CheckoutAsync(SyperPaymentViewModel model);
         Task<SyperPaymentStatusResponseViewModel> StatusAsync(SyperPaymentStatusViewModel model);

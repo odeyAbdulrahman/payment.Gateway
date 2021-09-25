@@ -9,7 +9,5 @@ namespace payment.Gateway.Syberpay.Code.Base.Models
     {
         public string applicationId { get; set; }
         public string transactionId { get; set; }
-        [JsonIgnore]
-        public int hash { get; set; }
     }
 }
